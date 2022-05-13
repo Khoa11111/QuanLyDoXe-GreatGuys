@@ -7,6 +7,7 @@ package MainFormCode;
 
 import java.awt.Color;
 import java.awt.Font;
+import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -21,7 +22,7 @@ import javax.swing.JTextField;
 public class MyComponent {
     
     public void setMyTabbedPane(JTabbedPane tbp){
-        tbp.setBounds(200, 55, 705, 502);
+        tbp.setBounds(150, 55, 753, 514);
     }
 
     public void setPanelTabbed(JPanel p){
@@ -36,7 +37,7 @@ public class MyComponent {
     }
     
     public void setPanel2(JPanel p){
-        p.setBounds(0, 90, 400,467);
+        p.setBounds(0, 90, 150,480);
         p.setBackground(new Color(0x11a0bd));
     }
     
@@ -48,6 +49,12 @@ public class MyComponent {
     
     public void setTextField(JTextField txt,int  x, int y){
         txt.setBounds(x, y, 150, 20);
+    }
+    
+    public void setButton(JButton btn,int x,int y,int w, int h){
+        btn.setBounds(x, y, w, h);
+        btn.setFont(new Font("San Serif",Font.BOLD,13));
+        btn.setFocusable(false);
     }
     
     public void setComboBox(JComboBox cbx,int x, int y){

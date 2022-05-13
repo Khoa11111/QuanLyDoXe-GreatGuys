@@ -7,6 +7,7 @@ package MainFormCode;
 
 import java.awt.Color;
 import java.awt.Font;
+import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -27,6 +28,7 @@ public class MainFormCode {
     
     JFrame frame = new JFrame();
     MyComponent component  = new MyComponent();
+    DefaultTableModel tdm;
     
     public void  getMainFormCodeFrame(){
         // create panel
@@ -57,6 +59,15 @@ public class MainFormCode {
         txtSDT = new JTextField();
         txtMK = new JTextField();
         
+        JTextField txtTK_MaNV = new JTextField();
+        
+        // create button
+        JButton btnTK_MaNV = new JButton("Tìm Theo Mã");
+        JButton btnThem = new JButton("Thêm");
+        JButton btnXoa = new JButton("Xóa");
+        JButton btnHienDS = new JButton("Hiện Danh Sách");
+        JButton btnTDTT = new JButton("Sửa Thông Tin");
+        
         // create combobox
         JComboBox cbxGT,cbxLoaiNV;
         cbxGT = new JComboBox();
@@ -86,6 +97,16 @@ public class MainFormCode {
         component.setTextField(txtSDT, 520, 100);
         component.setTextField(txtMK, 520, 140);
         
+        component.setTextField(txtTK_MaNV, 10, 200);
+        
+        // set up button
+        component.setButton(btnTK_MaNV, 170, 200,117,20);
+        component.setButton(btnThem, 310, 200, 70, 20);
+        component.setButton(btnXoa, 385, 200, 70, 20);
+        component.setButton(btnTDTT,460, 200, 128, 20);
+        component.setButton(btnHienDS,604, 200, 140, 20);
+        
+        
         // set up comboBox
         component.setComboBox(cbxGT, 160, 140);
         component.setComboBox(cbxLoaiNV, 520, 20);
@@ -95,11 +116,6 @@ public class MainFormCode {
         component.setPanel2(panel2);
         component.setPanelTabbed(panelTaiKhoan);         
         component.setPanelTabbed(panelQuanLy);
-        
-        //set up table
-        JScrollPane sp = new JScrollPane(tableTK);
-        sp.setBounds(10, 230, 675, 220);
-        
         
         // set up TabbedPane
         component.setMyTabbedPane(tabpane);
@@ -111,8 +127,12 @@ public class MainFormCode {
         cbxGT.addItem("Nam");
         cbxGT.addItem("Nữ");
         
+        //set up table
+        JScrollPane sp = new JScrollPane(tableTK);
+        sp.setBounds(10, 230, 735, 220);
+        
         // add column to tableTK
-        DefaultTableModel tdm = (DefaultTableModel) tableTK.getModel();
+        tdm = (DefaultTableModel) tableTK.getModel();
         tdm.addColumn("Mã NV");
         tdm.addColumn("Tên NV");
         tdm.addColumn("Ngày Sinh");
@@ -145,6 +165,12 @@ public class MainFormCode {
         panelTaiKhoan.add(cbxGT);
         panelTaiKhoan.add(cbxLoaiNV);
         panelTaiKhoan.add(sp);
+        panelTaiKhoan.add(txtTK_MaNV);
+        panelTaiKhoan.add(btnTK_MaNV);
+        panelTaiKhoan.add(btnThem);
+        panelTaiKhoan.add(btnXoa);
+        panelTaiKhoan.add(btnHienDS);
+        panelTaiKhoan.add(btnTDTT);
         
         // add panel to tabbedpane
         tabpane.addTab("Tai Khoan",panelTaiKhoan);
