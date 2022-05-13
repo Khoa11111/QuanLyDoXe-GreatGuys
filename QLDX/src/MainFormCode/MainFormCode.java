@@ -7,6 +7,8 @@ package MainFormCode;
 
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
@@ -29,6 +31,8 @@ public class MainFormCode {
     JFrame frame = new JFrame();
     MyComponent component  = new MyComponent();
     DefaultTableModel tdm;
+    MyTable tb;
+    JTextField txtMaNV,txtTenNV,txtNgaySinh,txtDiaChi,txtSDT,txtMK;
     
     public void  getMainFormCodeFrame(){
         // create panel
@@ -50,8 +54,6 @@ public class MainFormCode {
         labelMK = new JLabel("Mật Khẩu");
         
         // create textfield
-        JTextField txtMaNV,txtTenNV,txtNgaySinh,txtDiaChi
-                ,txtSDT,txtMK;
         txtMaNV = new JTextField();
         txtTenNV = new JTextField();
         txtNgaySinh = new JTextField();
@@ -143,7 +145,7 @@ public class MainFormCode {
         tdm.addColumn("Mật Khẩu");
         
         //add data from sql to tableTK
-        MyTable tb = new MyTable();
+        tb = new MyTable();
         tb.getTableDangNhap(tableTK);
         
                 
@@ -199,6 +201,16 @@ public class MainFormCode {
             }
         };
         
+        // set event for button btnTK_MaNV
+        ActionListener actionListener = new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if(e.getSource()==btnTK_MaNV){
+                    tb.getTableDangNhap_MaNV(tableTK,txtTK_MaNV);
+                }
+            }
+        };
+        btnTK_MaNV.addActionListener(actionListener);
     }
     public static void main(String[] args) {
         MainFormCode mainFormCode = new MainFormCode();
